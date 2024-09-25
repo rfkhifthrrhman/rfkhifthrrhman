@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Map Interaktif: Surat Lamaran Pekerjaan</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.11.0/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            background-color: #f0f0f5;
+            color: #4a4a4a;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #374785;
+            font-size: 2em;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        #mindmap {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 20px;
+            min-height: 450px;
+            cursor: move;
+            overflow: hidden;
+        }
+        #legend {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+        #legend h3 {
+            color: #374785;
+            font-size: 1.3em;
+        }
+        /* Mermaid chart styling */
+        #mindmap .node rect, 
+        #mindmap .node circle, 
+        #mindmap .node ellipse, 
+        #mindmap .node polygon {
+            fill: #eef2f5;
+            stroke: #5c6f8f;
+            stroke-width: 2px;
+        }
+        #mindmap .node .label {
+            font-size: 15px;
+            font-weight: bold;
+            max-width: 150px;
+            text-align: center;
+            padding: 6px;
+            word-wrap: break-word;
+        }
+        #mindmap .edgePath .path {
+            stroke: #5c6f8f;
+            stroke-width: 2px;
+        }
+        #mindmap .edgeLabel {
+            font-size: 12px;
+            background-color: #fff;
+        }
+        /* Media query for small screens */
+        @media only screen and (max-width: 600px) {
+            #mindmap {
+                min-height: 350px;
+                padding: 8px;
+            }
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 15px;
+            }
+            #legend {
+                padding: 10px;
+            }
+            .legend-color {
+                width: 20px;
+                height: 20px;
+            }
+            #mindmap .node .label {
+                font-size: 12px;
+                max-width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mind Map Interaktif: Surat Lamaran Pekerjaan</h1>
+    <div id="mindmap"></div>
+    
+    <div id="legend">
+        <h3>Legenda:</h3>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #ff6b6b;"></div>
+            <span>Pengertian & Jenis</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #6bff6b;"></div>
+            <span>Unsur Kebahasaan</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #6b6bff;"></div>
+            <span>Sistematika</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #ffeb3b;"></div>
+            <span>Tips Penting</span>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'neutral',
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                nodeSpacing: 140,
+                rankSpacing: 140
+            }
+        });
+
+        const mindmapCode = `
+        graph TD
+            A[Surat Lamaran Pekerjaan]
+            A -->|Pengertian| B[Surat formal untuk<br>melamar pekerjaan]
+            A -->|Jenis| C1[Digabung dengan CV]
+            A -->|Jenis| C2[Dipisah dengan CV]
+
+            A -->|Unsur Kebahasaan| D[Unsur Kebahasaan]
+            D --> D1[Bentuk surat<br>standar]
+            D --> D2[Bahasa baik<br>dan benar]
+            D --> D3[Kata-kata sopan]
+            D --> D4[Pengantar jelas<br>& singkat]
+            D --> D5[Tulisan bersih<br>& rapi]
+            D --> D6[Sesuai norma<br>bahasa surat]
+
+            A -->|Sistematika| E[Sistematika/<br>Bagian-bagian]
+            E --> E1[Tempat dan<br>tanggal surat]
+            E --> E2[Hal dan lampiran]
+            E --> E3[Alamat surat]
+            E --> E4[Salam pembuka]
+            E --> E5[Alinea pembuka]
+            E --> E6[Isi surat]
+            E --> E7[Penutup]
+            E --> E8[Salam penutup]
+            E --> E9[Tanda tangan<br>dan nama]
+
+            E5 --> E5a[Sumber informasi<br>lowongan]
+            E5a --> E5a1[Iklan]
+            E5a --> E5a2[Informasi<br>seseorang]
+            E5a --> E5a3[Pengumuman<br>resmi]
+            E5a --> E5a4[Permohonan<br>sekolah]
+            E5a --> E5a5[Inisiatif sendiri]
+
+            E6 --> E6a[Identitas]
+            E6 --> E6b[Maksud dan<br>tujuan]
+            E6 --> E6c[Menyatakan<br>lampiran]
+
+            A -->|Tips| F[Tips Penting]
+            F --> F1[Gunakan bahasa<br>formal]
+            F --> F2[Tulis tangan<br>dengan rapi]
+            F --> F3[Gunakan tinta<br>hitam]
+            F --> F4[Hindari coretan]
+            F --> F5[Lampirkan<br>dokumen pendukung]
+
+            classDef pengertianJenis fill:#ff6b6b,stroke:#333,stroke-width:2px;
+            classDef unsurKebahasaan fill:#6bff6b,stroke:#333,stroke-width:2px;
+            classDef sistematika fill:#6b6bff,stroke:#333,stroke-width:2px;
+            classDef tips fill:#ffeb3b,stroke:#333,stroke-width:2px;
+
+            class B,C1,C2 pengertianJenis;
+            class D,D1,D2,D3,D4,D5,D6 unsurKebahasaan;
+            class E,E1,E2,E3,E4,E5,E6,E7,E8,E9,E5a,E5a1,E5a2,E5a3,E5a4,E5a5,E6a,E6b,E6c sistematika;
+            class F,F1,F2,F3,F4,F5 tips;
+        `;
+
+        const mindmapElement = document.getElementById("mindmap");
+        mindmapElement.innerHTML = mindmapCode;
+        mermaid.init(undefined, mindmapElement);
+
+        let isDragging = false;
+        let startX, startY, scrollLeft, scrollTop;
+
+        mindmapElement.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.pageX - mindmapElement.offsetLeft;
+            startY = e.pageY - mindmapElement.offsetTop;
+            scrollLeft = mindmapElement.scrollLeft;
+            scrollTop = mindmapElement.scrollTop;
+            mindmapElement.style.cursor = 'grabbing';
+        });
+
+        mindmapElement.addEventListener('mouseleave', () => {
+            isDragging = false;
+            mindmapElement.style.cursor = 'default';
+        });
+
+        mindmapElement.addEventListener('mouseup', () => {
+            isDragging = false;
+            mindmapElement.style.cursor = 'default';
+        });
+
+        mindmapElement.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - mindmapElement.offsetLeft;
+            const y = e.pageY - mindmapElement.offsetTop;
+            const walkX = (x - startX) * 1;
+            const walkY = (y - startY) * 1;
+            mindmapElement.scrollLeft = scrollLeft - walkX;
+            mindmapElement.scrollTop = scrollTop - walkY;
+        });
+    </script>
+    
+</body>
+</html>
